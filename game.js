@@ -8,8 +8,8 @@ var multipler = 1.0;
 var myGameArea = {
     canvas : document.createElement("canvas"), // create element node
     start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 270;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -21,9 +21,10 @@ var myGameArea = {
 }
 
 function startGame() {
-    myGamePiece = new component(30, 30, "red", 10, 120);
+    myGamePiece = new component(30, 30, "green", 5, 120);
     myGamePiece.gravity = 0.05;
-    myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+    myScore = new component("28px", "Consolas", "red", window.innerWidth - 200 , 25, "text");
+    myScore2 = new component("29px", "Consolas", "green", window.innerWidth - 299.5 , 25, "text");
     myGameArea.start();
 }
 
@@ -120,8 +121,8 @@ function updateGameArea() {
         minGap = 50;
         maxGap = 200;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-        myObstacles.push(new component(10, height, "green", x, 0));
-        myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+        myObstacles.push(new component(10, height, "white", x, 0));
+        myObstacles.push(new component(10, x - height - gap, "white", x, height + gap));
 
         this.multipler += 0.05;
     }
