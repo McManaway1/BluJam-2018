@@ -6,14 +6,14 @@ var multipler = 1.0;
 // This block creates the object myGameArea and adds methods to it with the colon operator.
 // Remember the notation is var object = {property1 : value1, property2: function() { method1 }}
 var myGameArea = {
-    canvas : document.createElement("canvas"),
+    canvas : document.createElement("canvas"), // create element node
     start : function() {
         this.canvas.width = 480;
         this.canvas.height = 270;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
-        this.interval = setInterval(updateGameArea, 20);
+        this.interval = setInterval(updateGameArea, 20); // call updateGameArea every 20ms
         },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -63,7 +63,6 @@ function component(width, height, color, x, y, type) {
     this.hitBottom = function() {
         var rockbottom = myGameArea.canvas.height - this.height;
 
-    
         if (this.y > rockbottom) {
             this.y = rockbottom;
             this.gravitySpeed = 0;
@@ -140,12 +139,12 @@ function updateGameArea() {
 
 function keyDown(e) {
     e = e || window.event;
-    if (e.keyCode == '87' || e.keyCode == '119') accelerate(-0.2);
+    if (e.keyCode == '87' || e.keyCode == '119' || e.keyCode == '32') accelerate(-0.2);
 }
 
 function keyUp(e) {
     e = e || window.event;
-    if (e.keyCode == '87' || e.keyCode == '119') accelerate(0.07);
+    if (e.keyCode == '87' || e.keyCode == '119' || e.keyCode == '32') accelerate(0.07);
 }
 
 function everyinterval(n) {
