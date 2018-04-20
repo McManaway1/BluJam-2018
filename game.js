@@ -1,6 +1,7 @@
 var myGamePiece;
 var myObstacles = [];
 var myScore;
+var multipler = 1.0;
 
 // This block creates the object myGameArea and adds methods to it with the colon operator.
 // Remember the notation is var object = {property1 : value1, property2: function() { method1 }}
@@ -119,10 +120,12 @@ function updateGameArea() {
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
         myObstacles.push(new component(10, height, "green", x, 0));
         myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+
+        this.multipler += 0.05;
     }
 
     for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -1;
+        myObstacles[i].x += -1 * multipler;
         myObstacles[i].update();
     }
 
@@ -139,5 +142,5 @@ function everyinterval(n) {
 }
 
 function accelerate(n) {
-    myGamePiece.gravity = n;
+    myGamePiece.gravity = n * multipler;
 }
