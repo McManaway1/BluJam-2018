@@ -107,6 +107,9 @@ function updateGameArea() {
         } 
     }
 
+    document.onkeydown = keyDown;
+    document.onkeyup = keyUp;
+
     myGameArea.clear();
     myGameArea.frameNo += 1;
 
@@ -133,6 +136,16 @@ function updateGameArea() {
     myScore.update();
     myGamePiece.newPos();
     myGamePiece.update();
+}
+
+function keyDown(e) {
+    e = e || window.event;
+    if (e.keyCode == '87' || e.keyCode == '119') accelerate(-0.2);
+}
+
+function keyUp(e) {
+    e = e || window.event;
+    if (e.keyCode == '87' || e.keyCode == '119') accelerate(0.07);
 }
 
 function everyinterval(n) {
