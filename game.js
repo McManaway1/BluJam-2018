@@ -56,6 +56,7 @@ function component(width, height, color, x, y, type) {
         this.x += this.speedX;
         this.y += this.speedY + this.gravitySpeed;
         this.hitBottom();
+        this.hitSky();
     }
 
     this.hitBottom = function() {
@@ -65,6 +66,15 @@ function component(width, height, color, x, y, type) {
         if (this.y > rockbottom) {
             this.y = rockbottom;
             this.gravitySpeed = 0;
+        }
+    }
+
+    this.hitSky = function() {
+        var theSky = 0;
+
+        if (this.y < theSky) {
+            this.y = theSky;
+            myGamePiece.gravitySpeed = 0;
         }
     }
 
