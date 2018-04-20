@@ -20,12 +20,22 @@ var myGameArea = {
     }
 }
 
+
+
 function startGame() {
-    myGamePiece = new component(30, 30, "green", 5, 120);
+    window.addEventListener('resize', resizeCanvas, false);
+
+    myGamePiece = new component(30, 30, "green", (window.innerWidth / 2 - 15), 120);
     myGamePiece.gravity = 0.05;
     myScore = new component("28px", "Consolas", "red", window.innerWidth - 200 , 25, "text");
-    myScore2 = new component("29px", "Consolas", "green", window.innerWidth - 299.5 , 25, "text");
     myGameArea.start();
+}
+
+function resizeCanvas() {
+    console.log(window.innerWidth);
+
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
 }
 
 function component(width, height, color, x, y, type) {
@@ -121,8 +131,8 @@ function updateGameArea() {
         minGap = 50;
         maxGap = 200;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-        myObstacles.push(new component(10, height, "white", x, 0));
-        myObstacles.push(new component(10, x - height - gap, "white", x, height + gap));
+        myObstacles.push(new component(10, height, "grey", x, 0));
+        myObstacles.push(new component(10, x - height - gap, "grey", x, height + gap));
 
         this.multipler += 0.05;
     }
