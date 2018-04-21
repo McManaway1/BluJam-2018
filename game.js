@@ -14,6 +14,7 @@ function onTick() {
 
     //Handle User input
     document.onkeydown = onKeyPress
+    document.onkeyup = onKeyRelease
     //TODO: document.onmousedown = onMousePress
 
     arena.frame++;

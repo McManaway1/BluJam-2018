@@ -5,6 +5,10 @@ function onMousePress (event) {
 
 function onKeyPress (event) {
     event = event || window.event;
+    player.inputs[event.keyCode] = true;
+}
 
-    console.log(player);
+function onKeyRelease (event) {
+    event = event || window.event;
+    player.inputs[event.keyCode] = false;
 }
