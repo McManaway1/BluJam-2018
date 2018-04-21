@@ -97,8 +97,8 @@ function Layer(x1, x2) {
         y = g.y;
         fallSpeed = g.fallSpeed;
 
-        g2.fillStyle = "grey";
-        g2.fillRect(0, y, arena.canvas.width, HEIGHT);
+        g2.fillRect(0, y, x1, HEIGHT);
+        g2.fillRect(x2, y, arena.canvas.width - x1, HEIGHT);
     }
 
     this.isOnGround = function () {
