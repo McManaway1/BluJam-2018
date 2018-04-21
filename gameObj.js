@@ -40,13 +40,13 @@ function Player(name, x, y, width, height) {
         for (var key = 0; key < this.inputs.length; key++) {
             if (this.inputs[key]) {
                 switch (key) {
-                    case 37:
+                    case 37:case 65:
                         x -= this.velocity;
                         break;
-                    case 39:
+                    case 39:case 68:
                         x += this.velocity;
                         break;
-                    case 32:
+                    case 32:case 87:
                         if (this.fallSpeed == 0) this.fallSpeed -= this.velocity;
                         break;
                 }
