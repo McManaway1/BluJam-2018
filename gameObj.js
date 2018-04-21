@@ -1,5 +1,3 @@
-var gravity = 0.1;
-
 function Arena(width, height) {
     this.width = width;
     this.height = height;
@@ -22,9 +20,10 @@ function Arena(width, height) {
 }
 
 function Player(name, x, y, width, height) {
+    const VELOCITY = 4;
+
     this.inputs = [];
     var fallSpeed = 0;
-    var velocity = 4;
 
     this.tick = function () {
         g2 = arena.context;
@@ -41,13 +40,13 @@ function Player(name, x, y, width, height) {
             if (this.inputs[key]) {
                 switch (key) {
                     case 37: case 65:
-                        x -= velocity;
+                        x -= VELOCITY;
                         break;
                     case 39: case 68:
-                        x += velocity;
+                        x += VELOCITY;
                         break;
                     case 32: case 87:
-                        if (fallSpeed == 0) fallSpeed -= velocity;
+                        if (fallSpeed == 0) fallSpeed -= VELOCITY;
                         break;
                 }
             }
@@ -62,19 +61,22 @@ function Player(name, x, y, width, height) {
         var floor = arena.height - height;
 
         //Floor Collision + Gravity
-        if (y > floor) {
-            y = floor;
-            fallSpeed = 0;
-        } else {
-            fallSpeed += gravity;
-            y += fallSpeed;
-        }
+        // if (y > floor) {
+        //     y = floor;
+        //     fallSpeed = 0;
+        // } else {
+        //     fallSpeed += gravity;
+        //     y += fallSpeed;
+        // }
+        var g = gravity(y, floor, fallSpeed);
+        y = g.y;
+        fallSpeed = g.fallSpeed;
 
         //Roof Collision
         if (y < roof) y = roof;
 
         //Wall Collision
-        if(x < leftWall) x = leftWall;
+        if (x < leftWall) x = leftWall;
         else if (x > rightWall) x = rightWall;
     }
 }
@@ -82,15 +84,39 @@ function Player(name, x, y, width, height) {
 function Layer(x1, x2) {
     const HEIGHT = 20;
 
+    var fallSpeed = 0;
+
     this.x1 = x1;
     this.x2 = x2;
     this.y = 0;
 
     this.tick = function () {
-        //
+        g2 = arena.context;
+
+        var g = gravity(this.y, floor, fallSpeed);
+        y = g.y;
+        fallSpeed = g.fallSpeed;
+
+        g2.fillRect(0, y, arena.canvas.width, HEIGHT);
     }
 
     this.isOnGround = function () {
         //
     }
+}
+
+function gravity(y, floor, fallSpeed) {
+    const GRAVITY = 0.25;
+
+    if (y > floor) {
+        y = floor;
+        fallSpeed = 0;
+    } else {
+        fallSpeed += GRAVITY;
+        y += fallSpeed;
+    }
+    return {
+        y: y,
+        fallSpeed: fallSpeed
+    };
 }
