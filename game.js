@@ -28,7 +28,7 @@ function onTick() {
     //TODO: document.onmousedown = onMousePress
 
     if (arena.frame == 1 || arena.frame % 200 == 0) {
-        layers.push(new Layer(Math.random() * arena.canvas.width - gap));
+        layers.push(new Layer(Math.random() * (arena.canvas.width - gap) + gap, gap));
     }
 
     for (i = 0; i < layers.length; i++) {
