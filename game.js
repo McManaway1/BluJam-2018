@@ -10,7 +10,7 @@ var layers = [];
 
 function init() {
     this.arena = new Arena(600, 400);
-    this.player = new Player(200, (400 - 20), 10, 20);
+    this.player = new Player(200, (400 - 20), 12, 24);
 
     this.arena.start();
 }
@@ -23,7 +23,7 @@ function onTick() {
     document.onkeyup = onKeyRelease
     //TODO: document.onmousedown = onMousePress
 
-    if (arena.frame == 1 || arena.frame % 100 == 0) {
+    if (arena.frame == 0 || arena.frame % 300 == 0) {
         layers.push(new Layer(250, 350));
     }
 

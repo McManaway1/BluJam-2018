@@ -36,6 +36,7 @@ function Player(x, y, width, height) {
         this.handleInputs();
         this.handleCollisions();
 
+        g2.fillStyle = "black";
         g2.fillRect(x, y, width, height);
     }
 
@@ -79,7 +80,7 @@ function Player(x, y, width, height) {
 }
 
 function Layer(x1, x2) {
-    const HEIGHT = 20;
+    const HEIGHT = 15;
 
     var fallSpeed = 0;
     var gap = 200;
@@ -96,6 +97,7 @@ function Layer(x1, x2) {
         y = g.y;
         fallSpeed = g.fallSpeed;
 
+        g2.fillStyle = "grey";
         g2.fillRect(0, y, arena.canvas.width, HEIGHT);
     }
 
@@ -105,7 +107,7 @@ function Layer(x1, x2) {
 }
 
 function gravity(y, floor, fallSpeed) {
-    const GRAVITY = 0.24;
+    const GRAVITY = 0.20;
 
     if (y > floor) {
         y = floor;
