@@ -95,6 +95,7 @@ function Layer(x, gap) {
         y = g.y;
         fallSpeed = g.fallSpeed;
 
+        g2.fillStyle = "grey";
         g2.fillRect(0, y, x, HEIGHT);
         g2.fillRect(x + gap, y, arena.canvas.width - x - gap, HEIGHT);
     }
