@@ -52,10 +52,10 @@ function updateGameArea() {
         x = gameArea.canvas.width;
         minHeight = 30;
         maxHeight = window.innerHeight * 0.75;
-        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+        height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
         minGap = 70;
         maxGap = 130;
-        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+        gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
         obstacles.push(new component(10, height, "grey", x, 0));
         obstacles.push(new component(10, x - height - gap, "grey", x, height + gap));
     }
@@ -76,6 +76,11 @@ function keyDown(e) {
     e = e || window.event;
     if (e.keyCode == '87' || e.keyCode == '119' || e.keyCode == '32') {
         gamePiece.gravitySpeed = -3.5;
+    } else if (e.keyCode == '82') {
+        gameArea.clear();
+        gameArea.frameNo = 0;
+        obstacles = [];
+        startGame();
     }
 }
 
