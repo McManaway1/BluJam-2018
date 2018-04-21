@@ -28,17 +28,10 @@ var gameArea = {
 }
 
 function startGame() {
-<<<<<<< HEAD
-    myGamePiece = new component(30, 30, "green", (window.innerWidth / 2 - 15), 120, "player");
-    myGamePiece.gravity = 0.08;
-    myScore = new component("28px", "Consolas", "red", window.innerWidth - 200 , 25, "text");
-    myGameArea.start();
-=======
-    gamePiece = new component(30, 30, "green", (window.innerWidth / 2 - 15), 120);
+    gamePiece = new component(30, 30, "green", (window.innerWidth / 2 - 15), 120, "player");
     gamePiece.gravity = 0.08;
     score = new component("28px", "Consolas", "red", window.innerWidth - 200, 25, "text");
     gameArea.start();
->>>>>>> 98a69e4d0435c1e2099fa53fcc7440ff8b4e1b1d
 }
 
 function updateGameArea() {
@@ -55,16 +48,16 @@ function updateGameArea() {
     gameArea.clear();
     gameArea.frameNo += 1;
 
-    if (myGameArea.frameNo == 1 || everyinterval(150)) {
-        x = myGameArea.canvas.width;
+    if (gameArea.frameNo == 1 || everyinterval(150)) {
+        x = gameArea.canvas.width;
         minHeight = 30;
         maxHeight = window.innerHeight * 0.75;
         height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
         minGap = 70;
         maxGap = 130;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-        myObstacles.push(new component(10, height, "grey", x, 0));
-        myObstacles.push(new component(10, x - height - gap, "grey", x, height + gap));
+        obstacles.push(new component(10, height, "grey", x, 0));
+        obstacles.push(new component(10, x - height - gap, "grey", x, height + gap));
     }
 
     for (i = 0; i < obstacles.length; i += 1) {
@@ -82,7 +75,7 @@ function updateGameArea() {
 function keyDown(e) {
     e = e || window.event;
     if (e.keyCode == '87' || e.keyCode == '119' || e.keyCode == '32') {
-        myGamePiece.gravitySpeed = -3.5;
+        gamePiece.gravitySpeed = -3.5;
     }
 }
 
