@@ -48,16 +48,16 @@ function updateGameArea() {
     gameArea.clear();
     gameArea.frameNo += 1;
 
-    if (gameArea.frameNo == 1 || everyinterval(150)) {
-        x = gameArea.canvas.width;
-        minHeight = 20;
-        maxHeight = 200;
-        height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
-        minGap = 50;
-        maxGap = 200;
-        gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-        obstacles.push(new component(10, height, "grey", x, 0));
-        obstacles.push(new component(10, x - height - gap, "grey", x, height + gap));
+    if (myGameArea.frameNo == 1 || everyinterval(150)) {
+        x = myGameArea.canvas.width;
+        minHeight = 30;
+        maxHeight = window.innerHeight * 0.75;
+        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+        minGap = 70;
+        maxGap = 130;
+        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+        myObstacles.push(new component(10, height, "grey", x, 0));
+        myObstacles.push(new component(10, x - height - gap, "grey", x, height + gap));
     }
 
     for (i = 0; i < obstacles.length; i += 1) {
@@ -75,8 +75,7 @@ function updateGameArea() {
 function keyDown(e) {
     e = e || window.event;
     if (e.keyCode == '87' || e.keyCode == '119' || e.keyCode == '32') {
-        console.log("REEE");
-        gamePiece.gravitySpeed = -3.5;
+        myGamePiece.gravitySpeed = -3.5;
     }
 }
 
@@ -85,3 +84,4 @@ function everyinterval(n) {
         return true;
     } return false;
 }
+
