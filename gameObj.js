@@ -6,7 +6,7 @@ function Arena(width, height) {
 
     this.canvas = document.createElement("canvas");
 
-    this.start = function() {
+    this.start = function () {
         this.canvas.width = this.width;
         this.canvas.height = this.height;
         this.context = this.canvas.getContext("2d");
@@ -16,7 +16,7 @@ function Arena(width, height) {
         this.interval = setInterval(onTick, 20);
     }
 
-    this.clear = function() {
+    this.clear = function () {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
@@ -46,7 +46,7 @@ function Player(name, x, y, width, height) {
                     x += velocity;
                     break;
                 case 32:
-                    if(fallSpeed == 0) fallSpeed -= velocity;
+                    if (fallSpeed == 0) fallSpeed -= velocity;
                     break;
             }
         }
@@ -56,7 +56,7 @@ function Player(name, x, y, width, height) {
     this.handleGravity = function () {
         var floor = arena.height - height;
 
-        if(y > floor) {
+        if (y > floor) {
             y = floor;
             fallSpeed = 0;
         } else {
@@ -68,7 +68,7 @@ function Player(name, x, y, width, height) {
 
 function Layer(x1, x2) {
     const HEIGHT = 20;
-    
+
     this.x1 = x1;
     this.x2 = x2;
     this.y = 0;
@@ -77,7 +77,7 @@ function Layer(x1, x2) {
         //
     }
 
-    this.isOnGround = function() {
+    this.isOnGround = function () {
         //
     }
 }
