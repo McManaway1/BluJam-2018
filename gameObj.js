@@ -22,27 +22,34 @@ function Arena(width, height) {
 }
 
 function Player(name, x, y, width, height) {
+    var inputs = [];
     var fallSpeed = 0;
-
-    this.jump = function () {
-        if(fallSpeed == 0) fallSpeed = -2;
-    }
-
-    this.moveLeft = function () {
-        x -= 2;
-    }
-
-    this.moveRight = function () {
-        x += 2;
-    }
+    var velocity = 2;
 
     this.tick = function () {
         g2 = arena.context;
 
+        this.handleInputs();
         this.handleGravity();
 
         g2.fillRect(x, y, width, height);
         g2.fillText(name, x - 2, y - 2);
+    }
+
+    this.handleInputs = function () {
+        for (const keyCode of inputs) {
+            switch (event.keyCode) {
+                case 37:
+                    x -= velocity;
+                    break;
+                case 39:
+                    x += velocity;
+                    break;
+                case 32:
+                    if(fallSpeed == 0) fallSpeed -= velocity;
+                    break;
+            }
+        }
     }
 
 
