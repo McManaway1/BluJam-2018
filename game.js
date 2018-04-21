@@ -12,6 +12,10 @@ function init() {
 function onTick() {
     arena.clear();
 
+    //Handle User input
+    document.onkeydown = onKeyPress
+    //TODO: document.onmousedown = onMousePress
+
     arena.frame++;
     player.tick();
 }

@@ -1,3 +1,5 @@
+var gravity = 0.098;
+
 function Arena(width, height) {
     this.width = width;
     this.height = height;
@@ -20,15 +22,40 @@ function Arena(width, height) {
 }
 
 function Player(name, x, y, width, height) {
-    this.name = name;
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
+    var fallSpeed = 0;
+
+    this.jump = function () {
+        if(fallSpeed == 0) fallSpeed = -2;
+    }
+
+    this.moveLeft = function () {
+        x -= 2;
+    }
+
+    this.moveRight = function () {
+        x += 2;
+    }
 
     this.tick = function () {
         g2 = arena.context;
+
+        this.handleGravity();
+
         g2.fillRect(x, y, width, height);
+        g2.fillText(name, x - 2, y - 2);
+    }
+
+
+    this.handleGravity = function () {
+        var floor = arena.height - height;
+
+        if(y > floor) {
+            y = floor;
+            fallSpeed = 0;
+        } else {
+            fallSpeed += gravity;
+            y += fallSpeed;
+        }
     }
 }
 
