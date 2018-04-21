@@ -1,4 +1,4 @@
-var gravity = 0.098;
+var gravity = 0.1;
 
 function Arena(width, height) {
     this.width = width;
@@ -23,14 +23,14 @@ function Arena(width, height) {
 
 function Player(name, x, y, width, height) {
     this.inputs = [];
-    this.fallSpeed = 0;
-    this.velocity = 2;
+    var fallSpeed = 0;
+    var velocity = 4;
 
     this.tick = function () {
         g2 = arena.context;
 
         this.handleInputs();
-        this.handleGravity();
+        this.handleCollisions();
 
         g2.fillRect(x, y, width, height);
         g2.fillText(name, x - 2, y - 2);
@@ -40,14 +40,14 @@ function Player(name, x, y, width, height) {
         for (var key = 0; key < this.inputs.length; key++) {
             if (this.inputs[key]) {
                 switch (key) {
-                    case 37:case 65:
-                        x -= this.velocity;
+                    case 37: case 65:
+                        x -= velocity;
                         break;
-                    case 39:case 68:
-                        x += this.velocity;
+                    case 39: case 68:
+                        x += velocity;
                         break;
-                    case 32:case 87:
-                        if (this.fallSpeed == 0) this.fallSpeed -= this.velocity;
+                    case 32: case 87:
+                        if (fallSpeed == 0) fallSpeed -= velocity;
                         break;
                 }
             }
@@ -55,16 +55,27 @@ function Player(name, x, y, width, height) {
     }
 
 
-    this.handleGravity = function () {
+    this.handleCollisions = function () {
+        var leftWall = 0;
+        var rightWall = arena.width - width;
+        var roof = 0;
         var floor = arena.height - height;
 
+        //Floor Collision + Gravity
         if (y > floor) {
             y = floor;
-            this.fallSpeed = 0;
+            fallSpeed = 0;
         } else {
-            this.fallSpeed += gravity;
-            y += this.fallSpeed;
+            fallSpeed += gravity;
+            y += fallSpeed;
         }
+
+        //Roof Collision
+        if (y < roof) y = roof;
+
+        //Wall Collision
+        if(x < leftWall) x = leftWall;
+        else if (x > rightWall) x = rightWall;
     }
 }
 
