@@ -79,14 +79,12 @@ function Player(x, y, width, height) {
     }
 }
 
-function Layer(x1, x2) {
+function Layer(x, gap) {
     const HEIGHT = 15;
 
     var fallSpeed = 0;
-    var gap = 200;
 
-    this.x1 = x1;
-    this.x2 = x2;
+    this.x = x;
     this.y = 0 - HEIGHT;
 
     this.tick = function () {
@@ -97,8 +95,8 @@ function Layer(x1, x2) {
         y = g.y;
         fallSpeed = g.fallSpeed;
 
-        g2.fillRect(0, y, x1, HEIGHT);
-        g2.fillRect(x2, y, arena.canvas.width - x1, HEIGHT);
+        g2.fillRect(0, y, x, HEIGHT);
+        g2.fillRect(x + gap, y, arena.canvas.width - x - gap, HEIGHT);
     }
 
     this.isOnGround = function () {
