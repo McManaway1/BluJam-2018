@@ -96,10 +96,6 @@ function Layer(x, gap) {
     }
 
     this.isOnGround = function (layers) {
-        for (layer in layers) {
-            if (this.y >= (layer.y - HEIGHT))
-                return true;
-        }
         if (this.y >= (arena.height - HEIGHT))
             return true;
         return false;
