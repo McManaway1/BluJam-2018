@@ -17,7 +17,7 @@ function Arena(width, height) {
 
     this.canvas = document.createElement("canvas");
 
-    this.start =  function() {
+    this.start = function() {
         this.canvas.width = this.width;
         this.canvas.height = this.height;
         this.context = this.canvas.getContext("2d");
@@ -29,5 +29,22 @@ function Arena(width, height) {
 
     this.clear = function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+function Layer(x1, x2, y) {
+    
+    const HEIGHT = 20;
+    
+    this.x1 = x1;
+    this.x2 = x2;
+    this.y = 0;
+
+    this.tick = function () {
+        //
+    }
+
+    this.isOnGround = function() {
+        //
     }
 }
