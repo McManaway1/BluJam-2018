@@ -79,8 +79,9 @@ function keyDown(e) {
     } else if (e.keyCode == '82') {
         gameArea.clear();
         gameArea.frameNo = 0;
+        gamePiece.y = 120;
+        gamePiece.gravitySpeed = 0;
         obstacles = [];
-        startGame();
     }
 }
 
