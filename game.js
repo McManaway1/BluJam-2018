@@ -1,21 +1,16 @@
+var arena;
 var player;
 var platforms = [];
 
-var arena = {
-    canvas: document.createElement("canvas"),
-    start: function() {
-        this.canvas.width = 400;
-        this.canvas.height = 400;
-        this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-    },
-    clear: function() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
+function init() {
+    this.arena = new arena();
+    this.player = new player("Sid", 200, 0, 10, 20);
+
+    this.arena.start();
 }
 
-function init() {
-    arena.start();
+function doTick() {
+    arena.frame++;
 }
 
 init();
