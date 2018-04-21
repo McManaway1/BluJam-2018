@@ -1,3 +1,9 @@
+/**
+ * Andrew McManaway (mcmanaway1)
+ * Liam Byrne (byrneliam2)
+ * BluJam-2018
+ */
+
 function onMousePress (event) {
     event = event || window.event;
 

@@ -1,3 +1,9 @@
+/**
+ * Andrew McManaway (mcmanaway1)
+ * Liam Byrne (byrneliam2)
+ * BluJam-2018
+ */
+
 function Arena(width, height) {
     this.width = width;
     this.height = height;
@@ -9,7 +15,7 @@ function Arena(width, height) {
         this.canvas.height = this.height;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        
+        this.frame = 0;
         this.interval = setInterval(onTick, 20);
     }
 
@@ -58,15 +64,15 @@ function Player(x, y, width, height) {
         var roof = 0;
         var floor = arena.height - height;
 
-        //Gravity
+        // Floor Collision + Gravity
         var g = gravity(y, floor, fallSpeed);
         y = g.y;
         fallSpeed = g.fallSpeed;
 
-        //Roof Collision
+        // Roof Collision
         if (y < roof) y = roof;
 
-        //Wall Collision
+        // Wall Collision
         if (x < leftWall) x = leftWall;
         else if (x > rightWall) x = rightWall;
     }
@@ -76,14 +82,16 @@ function Layer(x1, x2) {
     const HEIGHT = 20;
 
     var fallSpeed = 0;
+    var gap = 200;
 
     this.x1 = x1;
     this.x2 = x2;
-    this.y = 0;
+    this.y = 0 - HEIGHT;
 
     this.tick = function () {
         g2 = arena.context;
 
+        var floor = arena.height - HEIGHT;
         var g = gravity(this.y, floor, fallSpeed);
         y = g.y;
         fallSpeed = g.fallSpeed;
