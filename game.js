@@ -10,7 +10,8 @@ var layers = [];
 
 // Difficulty
 var speed = 1;
-var gap = 200;
+var gap = 150;
+var frame = 200;
 
 function init() {
     this.arena = new Arena(600, 400);
@@ -27,8 +28,8 @@ function onTick() {
     document.onkeyup = onKeyRelease
     //TODO: document.onmousedown = onMousePress
 
-    if (arena.frame % 200 == 0) {
-        layers.push(new Layer(Math.random() * (arena.canvas.width - gap) + gap, gap));
+    if (arena.frame % frame == 0) {
+        layers.push(new Layer(Math.random() * (arena.canvas.width - gap), gap));
     }
 
     for (i = 0; i < layers.length; i++) {
