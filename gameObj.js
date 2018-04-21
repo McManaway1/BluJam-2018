@@ -90,18 +90,13 @@ function Layer(x, gap) {
     this.tick = function () {
         g2 = arena.context;
 
-        var floor = arena.height - HEIGHT;
-        var g = gravity(this.y, floor, fallSpeed);
-        y = g.y;
-        fallSpeed = g.fallSpeed;
-
         g2.fillStyle = "grey";
-        g2.fillRect(0, y, x, HEIGHT);
-        g2.fillRect(x + gap, y, arena.canvas.width - x - gap, HEIGHT);
+        g2.fillRect(0, this.y, this.x, HEIGHT);
+        g2.fillRect(this.x + gap, this.y, arena.width - this.x - gap, HEIGHT);
     }
 
     this.isOnGround = function () {
-        //
+        return this.y >= (arena.height - HEIGHT);
     }
 }
 

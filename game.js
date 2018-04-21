@@ -29,11 +29,12 @@ function onTick() {
     //TODO: document.onmousedown = onMousePress
 
     if (arena.frame % frame == 0) {
-        layers.push(new Layer(Math.random() * (arena.canvas.width - gap), gap));
+        layers.push(new Layer(Math.random() * (arena.width - gap), gap));
     }
 
     for (i = 0; i < layers.length; i++) {
-        layers[i].y += speed;
+        if (!layers[i].isOnGround())
+            layers[i].y += speed;
         layers[i].tick();
     }
 
