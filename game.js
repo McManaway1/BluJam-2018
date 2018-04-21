@@ -42,11 +42,11 @@ function updateGameArea() {
 
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
         x = myGameArea.canvas.width;
-        minHeight = 20;
-        maxHeight = 200;
+        minHeight = 30;
+        maxHeight = window.innerHeight * 0.75;
         height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        minGap = 50;
-        maxGap = 200;
+        minGap = 70;
+        maxGap = 130;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
         myObstacles.push(new component(10, height, "grey", x, 0));
         myObstacles.push(new component(10, x - height - gap, "grey", x, height + gap));
@@ -66,7 +66,6 @@ function updateGameArea() {
 function keyDown(e) {
     e = e || window.event;
     if (e.keyCode == '87' || e.keyCode == '119' || e.keyCode == '32') {
-        console.log("REEE");
         myGamePiece.gravitySpeed = -3.5;
     }
 }
@@ -76,3 +75,4 @@ function everyinterval(n) {
         return true;
     } return false;
 }
+
