@@ -8,6 +8,8 @@ var arena;
 var player;
 var layers = [];
 
+var speed = 1;
+
 function init() {
     this.arena = new Arena(600, 400);
     this.player = new Player(200, (400 - 20), 12, 24);
@@ -28,7 +30,7 @@ function onTick() {
     }
 
     for (i = 0; i < layers.length; i++) {
-        layers[i].x -= 1.8;
+        layers[i].y += speed;
         layers[i].tick();
     }
 
