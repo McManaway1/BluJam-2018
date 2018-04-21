@@ -1,4 +1,5 @@
 canvas {
     background-color: rgb(226, 226, 226);
+    border: 3px solid grey;
     display: block;
   }
