@@ -9,8 +9,7 @@ function Arena(width, height) {
         this.canvas.height = this.height;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-
-        this.frame = 0;
+        
         this.interval = setInterval(onTick, 20);
     }
 
@@ -19,8 +18,8 @@ function Arena(width, height) {
     }
 }
 
-function Player(name, x, y, width, height) {
-    const VELOCITY = 4;
+function Player(x, y, width, height) {
+    const VELOCITY = 5;
 
     this.inputs = [];
     var fallSpeed = 0;
@@ -32,7 +31,6 @@ function Player(name, x, y, width, height) {
         this.handleCollisions();
 
         g2.fillRect(x, y, width, height);
-        g2.fillText(name, x - 2, y - 2);
     }
 
     this.handleInputs = function () {
@@ -60,14 +58,7 @@ function Player(name, x, y, width, height) {
         var roof = 0;
         var floor = arena.height - height;
 
-        //Floor Collision + Gravity
-        // if (y > floor) {
-        //     y = floor;
-        //     fallSpeed = 0;
-        // } else {
-        //     fallSpeed += gravity;
-        //     y += fallSpeed;
-        // }
+        //Gravity
         var g = gravity(y, floor, fallSpeed);
         y = g.y;
         fallSpeed = g.fallSpeed;
