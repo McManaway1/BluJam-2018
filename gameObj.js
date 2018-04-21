@@ -95,8 +95,14 @@ function Layer(x, gap) {
         g2.fillRect(this.x + gap, this.y, arena.width - this.x - gap, HEIGHT);
     }
 
-    this.isOnGround = function () {
-        return this.y >= (arena.height - HEIGHT);
+    this.isOnGround = function (layers) {
+        for (layer in layers) {
+            if (this.y >= (layer.y - HEIGHT))
+                return true;
+        }
+        if (this.y >= (arena.height - HEIGHT))
+            return true;
+        return false;
     }
 }
 

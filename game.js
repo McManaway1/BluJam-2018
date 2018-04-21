@@ -33,7 +33,7 @@ function onTick() {
     }
 
     for (i = 0; i < layers.length; i++) {
-        if (!layers[i].isOnGround())
+        if (!layers[i].isOnGround(layers))
             layers[i].y += speed;
         layers[i].tick();
     }
