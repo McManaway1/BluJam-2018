@@ -107,7 +107,7 @@ function Layer(x1, x2) {
 }
 
 function gravity(y, floor, fallSpeed) {
-    const GRAVITY = 0.24;
+    const GRAVITY = 0.2;
 
     if (y > floor) {
         y = floor;
