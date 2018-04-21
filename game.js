@@ -10,8 +10,10 @@ function init() {
 }
 
 function onTick() {
+    arena.clear();
+
     arena.frame++;
-    player.draw();
+    player.tick();
 }
 
 init();

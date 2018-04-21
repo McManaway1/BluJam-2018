@@ -1,16 +1,3 @@
-function Player(name, x, y, width, height) {
-    this.name = name;
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-
-    this.draw = function () {
-        g2 = arena.context;
-        g2.fillRect(x, y, width, height);
-    }
-}
-
 function Arena(width, height) {
     this.width = width;
     this.height = height;
@@ -32,8 +19,20 @@ function Arena(width, height) {
     }
 }
 
-function Layer(x1, x2, y) {
-    
+function Player(name, x, y, width, height) {
+    this.name = name;
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+
+    this.tick = function () {
+        g2 = arena.context;
+        g2.fillRect(x, y, width, height);
+    }
+}
+
+function Layer(x1, x2) {
     const HEIGHT = 20;
     
     this.x1 = x1;
