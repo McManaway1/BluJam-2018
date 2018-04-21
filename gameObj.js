@@ -39,13 +39,13 @@ function Player(name, x, y, width, height) {
         for (var key = 0; key < this.inputs.length; key++) {
             if (this.inputs[key]) {
                 switch (key) {
-                    case 37: case 65:
+                    case 65:
                         x -= VELOCITY;
                         break;
-                    case 39: case 68:
+                    case 68:
                         x += VELOCITY;
                         break;
-                    case 32: case 87:
+                    case 87:
                         if (fallSpeed == 0) fallSpeed -= VELOCITY;
                         break;
                 }
@@ -106,7 +106,7 @@ function Layer(x1, x2) {
 }
 
 function gravity(y, floor, fallSpeed) {
-    const GRAVITY = 0.25;
+    const GRAVITY = 0.24;
 
     if (y > floor) {
         y = floor;
