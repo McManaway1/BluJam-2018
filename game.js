@@ -20,7 +20,7 @@ var myGameArea = {
 }
 
 function startGame() {
-    myGamePiece = new component(30, 30, "green", (window.innerWidth / 2 - 15), 120);
+    myGamePiece = new component(30, 30, "green", (window.innerWidth / 2 - 15), 120, "player");
     myGamePiece.gravity = 0.08;
     myScore = new component("28px", "Consolas", "red", window.innerWidth - 200 , 25, "text");
     myGameArea.start();
@@ -75,4 +75,3 @@ function everyinterval(n) {
         return true;
     } return false;
 }
-
